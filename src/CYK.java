@@ -16,19 +16,27 @@ public class CYK {
      * - Input sztring
      * - Szabalyok listak segitsegevel
      * - Piramis ketdimenzios tombje
+     *
+     * Szabalyok:
+     * S -> AB | CD | CB | SS
+     * A -> BC | a
+     * B -> SC | b
+     * C -> DD | b
+     * D -> BA
      */
     public static final String inputString = "aabbaba";
-    public static final List<String> s = new ArrayList<String>(Arrays.asList("AB", "CD", "CB", "SS")); // S -> AB | CD | CB | SS
-    public static final List<String> a = new ArrayList<String>(Arrays.asList("BC", "a")); // A -> BC | a
-    public static final List<String> b = new ArrayList<String>(Arrays.asList("SC", "b")); // B -> SC | b
-    public static final List<String> c = new ArrayList<String>(Arrays.asList("DD", "b")); // C -> DD | b
-    public static final List<String> d = new ArrayList<String>(Arrays.asList("BA")); // D -> BA
+    public static final List<String> s = new ArrayList<String>(Arrays.asList("AB", "CD", "CB", "SS"));
+    public static final List<String> a = new ArrayList<String>(Arrays.asList("BC", "a"));
+    public static final List<String> b = new ArrayList<String>(Arrays.asList("SC", "b"));
+    public static final List<String> c = new ArrayList<String>(Arrays.asList("DD", "b"));
+    public static final List<String> d = new ArrayList<String>(Arrays.asList("BA"));
     public static final String[][] pyramid = new String[7][7];
 
     /**
-        @param stringLeft A baloldali nemterminalisok.
-        @param stringRight A jobboldali nemterminalisok.
-        @return Nemterminalisok.
+     * Ket mezo nemterminalisainak elemzese a szabalyok alapjan.
+     * @param stringLeft A baloldali nemterminalisok.
+     * @param stringRight A jobboldali nemterminalisok.
+     * @return Nemterminalisok.
      */
     public static String aXb(String stringLeft, String stringRight) {
         String nonterminals = "";
@@ -90,7 +98,27 @@ public class CYK {
         }
     }
 
-    public static void main(String[] args) {
+    /**
+     * Piramis egy soranak kiirasa.
+     * @param row A piramis kiirnando soranak szama.
+     */
+    public static void printRow(int row) {
+        for (int i = 0; i < 8-row; i++) {
+            if (pyramid[row-1][i].isEmpty()) {
+                System.out.print("- ");
+            } else {
+                System.out.print(pyramid[row-1][i]+" ");
+            }
+        }
+        System.out.println();
+    }
 
+    public static void main(String[] args) {
+        firstRowUpload(inputString);
+
+        // masodik sor
+        for (int i = 0; i < 6; i++) {
+            pyramid[1][i] = aXb(pyramid[0][i], pyramid[0][i+1]);
+        }
     }
 }
