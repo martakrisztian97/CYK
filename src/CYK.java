@@ -34,9 +34,9 @@ public class CYK {
 
     /**
      * Ket mezo nemterminalisainak elemzese a szabalyok alapjan. (Descartes-szorzat segitsegevel.)
-     * @param stringLeft A baloldali nemterminalisok.
-     * @param stringRight A jobboldali nemterminalisok.
-     * @return Nemterminalisok.
+     * @param stringLeft A baloldali mezo nemterminalisai.
+     * @param stringRight A jobboldali mezo nemterminalisai.
+     * @return A mezo nemterminalisai.
      */
     public static String aXb(String stringLeft, String stringRight) {
         String nonterminals = "";
@@ -99,6 +99,20 @@ public class CYK {
     }
 
     /**
+     * Sorok feltoltese a masodik sortól a tetejeig.
+     */
+    public static void rowsUpload() {
+        int k = 6;
+        for (int i = 1; i < 6; i++) {
+            for (int j = 0; j < k; j++) {
+                uploadField(i,j);
+            }
+            k--;
+        }
+        uploadField(6,0);
+    }
+
+    /**
      * Egy mezo nemterminalisainak meghatarozasa.
      * @param rowIndex A feltoltendo mezo soranak indexe.
      * @param columnIndex A feltoltendo mezo oszlopanak indexe.
@@ -137,6 +151,40 @@ public class CYK {
 
     public static void main(String[] args) {
         firstRowUpload(inputString);
-
+        rowsUpload();
+        printRow(1);
+        printRow(2);
+        printRow(3);
+        printRow(4);
+        printRow(5);
+        printRow(6);
+        printRow(7);
+        /*uploadField(1,0);
+        uploadField(1,1);
+        uploadField(1,2);
+        uploadField(1,3);
+        uploadField(1,4);
+        uploadField(1,5);
+        printRow(2);
+        uploadField(2, 0);
+        uploadField(2, 1);
+        uploadField(2, 2);
+        uploadField(2, 3);
+        uploadField(2, 4);
+        printRow(3);
+        uploadField(3,0);
+        uploadField(3,1);
+        uploadField(3,2);
+        uploadField(3,3);
+        printRow(4);
+        uploadField(4,0);
+        uploadField(4,1);
+        uploadField(4,2);
+        printRow(5);
+        uploadField(5,0);
+        uploadField(5,1);
+        printRow(6);
+        uploadField(6,0);
+        printRow(7);*/
     }
 }
