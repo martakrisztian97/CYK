@@ -33,7 +33,7 @@ public class CYK {
     public static final String[][] pyramid = new String[7][7];
 
     /**
-     * Ket mezo nemterminalisainak elemzese a szabalyok alapjan.
+     * Ket mezo nemterminalisainak elemzese a szabalyok alapjan. (Descartes-szorzat segitsegevel.)
      * @param stringLeft A baloldali nemterminalisok.
      * @param stringRight A jobboldali nemterminalisok.
      * @return Nemterminalisok.
@@ -99,6 +99,28 @@ public class CYK {
     }
 
     /**
+     * Egy mezo nemterminalisainak meghatarozasa.
+     * @param rowIndex A feltoltendo mezo soranak indexe.
+     * @param columnIndex A feltoltendo mezo oszlopanak indexe.
+     */
+    public static void uploadField(int rowIndex, int columnIndex) {
+        String nonterminals = "";
+        String temp;
+        int leftI = rowIndex-1;  // kezdeti bal mezo sor indexe
+        int leftJ = columnIndex; // kezdeti bal mezo oszlop indexe
+        int rightI = 0;          // kezdeti jobb mezo sor indexe
+        int rightJ = rowIndex+columnIndex;  // kezdeti jobb mezo oszlop indexe
+        while (leftI != -1) {
+            temp = aXb(pyramid[leftI][leftJ], pyramid[rightI][rightJ]);
+            nonterminals = nonterminals.concat(temp);
+            leftI--;
+            rightI++;
+            rightJ--;
+        }
+        pyramid[rowIndex][columnIndex] = nonterminals;
+    }
+
+    /**
      * Piramis egy soranak kiirasa.
      * @param row A piramis kiirnando soranak szama.
      */
@@ -116,9 +138,5 @@ public class CYK {
     public static void main(String[] args) {
         firstRowUpload(inputString);
 
-        // masodik sor
-        for (int i = 0; i < 6; i++) {
-            pyramid[1][i] = aXb(pyramid[0][i], pyramid[0][i+1]);
-        }
     }
 }
