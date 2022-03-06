@@ -15,13 +15,15 @@ public class CYK {
      * Globalis valtozok:
      * - Input sztring
      * - Szabalyok listak segitsegevel
+     * - Piramis ketdimenzios tombje
      */
-    public static final String input = "aabbaba";
+    public static final String inputString = "aabbaba";
     public static final List<String> s = new ArrayList<String>(Arrays.asList("AB", "CD", "CB", "SS")); // S -> AB | CD | CB | SS
     public static final List<String> a = new ArrayList<String>(Arrays.asList("BC", "a")); // A -> BC | a
     public static final List<String> b = new ArrayList<String>(Arrays.asList("SC", "b")); // B -> SC | b
     public static final List<String> c = new ArrayList<String>(Arrays.asList("DD", "b")); // C -> DD | b
     public static final List<String> d = new ArrayList<String>(Arrays.asList("BA")); // D -> BA
+    public static final String[][] pyramid = new String[7][7];
 
     /**
         @param stringLeft A baloldali nemterminalisok.
@@ -59,6 +61,36 @@ public class CYK {
         return nonterminals;
     }
 
+    /**
+     * Elso sor feltoltese.
+     * @param inputString Az input sztring.
+     */
+    public static void firstRowUpload(String inputString) {
+        String nonterminals = "";
+        for (int i = 0; i < inputString.length(); i++) {
+            nonterminals = "";
+            if (s.contains(inputString.charAt(i)+"")) {
+                nonterminals = nonterminals.concat("S");
+            }
+            if (a.contains(inputString.charAt(i)+"")) {
+                nonterminals = nonterminals.concat("A");
+            }
+            if (b.contains(inputString.charAt(i)+"")) {
+                nonterminals = nonterminals.concat("B");
+            }
+            if (c.contains(inputString.charAt(i)+"")) {
+                nonterminals = nonterminals.concat("C");
+            }
+            if (d.contains(inputString.charAt(i)+"")) {
+                nonterminals = nonterminals.concat("D");
+            }
+            if (!nonterminals.isEmpty()) {
+                pyramid[0][i] = nonterminals;
+            }
+        }
+    }
+
     public static void main(String[] args) {
+
     }
 }
