@@ -139,51 +139,37 @@ public class CYK {
      */
     public static void printRow(int row) {
         for (int i = 0; i < 8-row; i++) {
-            if (pyramid[row-1][i].isEmpty()) {
+            if (pyramid[row-1][i].isEmpty()) { // ha ures
                 System.out.print("- ");
-            } else {
+            } else if (pyramid[row-1][i].length() == 1){ // ha 1 nemtermilais szerepel a mezoben
                 System.out.print(pyramid[row-1][i]+" ");
+            } else {
+                for (int j = 0; j < pyramid[row-1][i].length(); j++) { // ha 2 vagy tobb nemtermilais szerepel a mezoben
+                    System.out.print(pyramid[row-1][i].charAt(j));
+                    if (j != pyramid[row-1][i].length()-1) { // utolso nemterminalis utani vesszo kiszurese
+                        System.out.print(",");
+                    }
+                }
             }
+            System.out.print("\t\t  ");
         }
-        System.out.println();
+        System.out.println("\n------------------------------------------------------------------------------");
     }
 
     public static void main(String[] args) {
         firstRowUpload();
         rowsUpload();
-        printRow(1);
-        printRow(2);
-        printRow(3);
-        printRow(4);
-        printRow(5);
-        printRow(6);
+        if (pyramid[6][0].contains("S")) {
+            System.out.println("A(z) "+inputString+" sztring levezetheto.\n");
+        } else {
+            System.out.println("A(z) "+inputString+" sztring nem vezetheto le.\n");
+        }
         printRow(7);
-        /*uploadField(1,0);
-        uploadField(1,1);
-        uploadField(1,2);
-        uploadField(1,3);
-        uploadField(1,4);
-        uploadField(1,5);
-        printRow(2);
-        uploadField(2, 0);
-        uploadField(2, 1);
-        uploadField(2, 2);
-        uploadField(2, 3);
-        uploadField(2, 4);
-        printRow(3);
-        uploadField(3,0);
-        uploadField(3,1);
-        uploadField(3,2);
-        uploadField(3,3);
-        printRow(4);
-        uploadField(4,0);
-        uploadField(4,1);
-        uploadField(4,2);
-        printRow(5);
-        uploadField(5,0);
-        uploadField(5,1);
         printRow(6);
-        uploadField(6,0);
-        printRow(7);*/
+        printRow(5);
+        printRow(4);
+        printRow(3);
+        printRow(2);
+        printRow(1);
     }
 }
