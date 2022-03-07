@@ -71,9 +71,8 @@ public class CYK {
 
     /**
      * Elso sor feltoltese.
-     * @param inputString Az input sztring.
      */
-    public static void firstRowUpload(String inputString) {
+    public static void firstRowUpload() {
         String nonterminals = "";
         for (int i = 0; i < inputString.length(); i++) {
             nonterminals = "";
@@ -99,7 +98,7 @@ public class CYK {
     }
 
     /**
-     * Sorok feltoltese a masodik sortól a tetejeig.
+     * Sorok feltoltese a masodik sortol a tetejeig.
      */
     public static void rowsUpload() {
         int k = 6;
@@ -150,7 +149,7 @@ public class CYK {
     }
 
     public static void main(String[] args) {
-        firstRowUpload(inputString);
+        firstRowUpload();
         rowsUpload();
         printRow(1);
         printRow(2);
