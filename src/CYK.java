@@ -24,7 +24,7 @@ public class CYK {
      * C -> DD | b
      * D -> BA
      */
-    public static final String inputString = "bbbbbbb";
+    public static final String inputString = "aabbaba";
     public static final List<String> s = new ArrayList<String>(Arrays.asList("AB", "CD", "CB", "SS"));
     public static final List<String> a = new ArrayList<String>(Arrays.asList("BC", "a"));
     public static final List<String> b = new ArrayList<String>(Arrays.asList("SC", "b"));
