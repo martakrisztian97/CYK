@@ -24,7 +24,7 @@ public class CYK {
      * C -> DD | b
      * D -> BA
      */
-    public static final String inputString = "aabbaba";
+    public static final String inputString = "bbbbbbb";
     public static final List<String> s = new ArrayList<String>(Arrays.asList("AB", "CD", "CB", "SS"));
     public static final List<String> a = new ArrayList<String>(Arrays.asList("BC", "a"));
     public static final List<String> b = new ArrayList<String>(Arrays.asList("SC", "b"));
@@ -118,6 +118,7 @@ public class CYK {
      */
     public static void uploadField(int rowIndex, int columnIndex) {
         String nonterminals = "";
+        String nonterminalsOnce = "";
         String temp;
         int leftI = rowIndex-1;  // kezdeti bal mezo sor indexe
         int leftJ = columnIndex; // kezdeti bal mezo oszlop indexe
@@ -130,7 +131,15 @@ public class CYK {
             rightI++;
             rightJ--;
         }
-        pyramid[rowIndex][columnIndex] = nonterminals;
+
+        // ismetlodo nemterminalisok kitorlese
+        for (int i = 0; i < nonterminals.length(); i++) {
+            if ( !nonterminalsOnce.contains(nonterminals.charAt(i)+"") ) {
+                nonterminalsOnce = nonterminalsOnce.concat(nonterminals.charAt(i)+"");
+            }
+        }
+
+        pyramid[rowIndex][columnIndex] = nonterminalsOnce;
     }
 
     /**
