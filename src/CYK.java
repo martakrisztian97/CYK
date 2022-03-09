@@ -165,13 +165,54 @@ public class CYK {
         System.out.println("\n------------------------------------------------------------------------------");
     }
 
+    /**
+     * A szabalyok kiiratasa.
+     */
+    public static void printRules() {
+        System.out.print("Rules: \nS -> ");
+        for (int i = 0; i < s.size(); i++) {
+            System.out.print(s.get(i));
+            if (i != s.size()-1)
+                System.out.print(" | ");
+        }
+
+        System.out.print("\nA -> ");
+        for (int i = 0; i < a.size(); i++) {
+            System.out.print(a.get(i));
+            if (i != a.size()-1)
+                System.out.print(" | ");
+        }
+
+        System.out.print("\nB -> ");
+        for (int i = 0; i < b.size(); i++) {
+            System.out.print(b.get(i));
+            if (i != b.size()-1)
+                System.out.print(" | ");
+        }
+
+        System.out.print("\nC -> ");
+        for (int i = 0; i < c.size(); i++) {
+            System.out.print(c.get(i));
+            if (i != c.size()-1)
+                System.out.print(" | ");
+        }
+
+        System.out.print("\nD -> ");
+        for (int i = 0; i < d.size(); i++) {
+            System.out.print(d.get(i));
+            if (i != d.size()-1)
+                System.out.print(" | ");
+        }
+    }
+
     public static void main(String[] args) {
+        printRules();
         firstRowUpload();
         rowsUpload();
         if (pyramid[6][0].contains("S")) {
-            System.out.println("A(z) "+inputString+" sztring levezetheto.\n");
+            System.out.println("\nA(z) "+inputString+" sztring levezetheto.\n");
         } else {
-            System.out.println("A(z) "+inputString+" sztring nem vezetheto le.\n");
+            System.out.println("\nA(z) "+inputString+" sztring nem vezetheto le.\n");
         }
         printRow(7);
         printRow(6);
