@@ -147,13 +147,13 @@ public class CYK {
      * @param row A piramis kiirnando soranak szama.
      */
     public static void printRow(int row) {
-        for (int i = 0; i < 8-row; i++) {
+        for (int i = 0; i < 8-row; i++) {  // i az oszlop szama, a sor szamanak fuggvenyeben
             if (pyramid[row-1][i].isEmpty()) { // ha ures
                 System.out.print("- ");
             } else if (pyramid[row-1][i].length() == 1){ // ha 1 nemtermilais szerepel a mezoben
                 System.out.print(pyramid[row-1][i]+" ");
             } else {
-                for (int j = 0; j < pyramid[row-1][i].length(); j++) { // ha 2 vagy tobb nemtermilais szerepel a mezoben
+                for (int j = 0; j < pyramid[row-1][i].length(); j++) { // ha 2 vagy tobb nemterminalis szerepel a mezoben
                     System.out.print(pyramid[row-1][i].charAt(j));
                     if (j != pyramid[row-1][i].length()-1) { // utolso nemterminalis utani vesszo kiszurese
                         System.out.print(",");
