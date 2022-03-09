@@ -25,11 +25,11 @@ public class CYK {
      * D -> BA
      */
     public static final String inputString = "aabbaba";
-    public static final List<String> s = new ArrayList<String>(Arrays.asList("AB", "CD", "CB", "SS"));
-    public static final List<String> a = new ArrayList<String>(Arrays.asList("BC", "a"));
-    public static final List<String> b = new ArrayList<String>(Arrays.asList("SC", "b"));
-    public static final List<String> c = new ArrayList<String>(Arrays.asList("DD", "b"));
-    public static final List<String> d = new ArrayList<String>(Arrays.asList("BA"));
+    public static final List<String> sRules = new ArrayList<String>(Arrays.asList("AB", "CD", "CB", "SS"));
+    public static final List<String> aRules = new ArrayList<String>(Arrays.asList("BC", "a"));
+    public static final List<String> bRules = new ArrayList<String>(Arrays.asList("SC", "b"));
+    public static final List<String> cRules = new ArrayList<String>(Arrays.asList("DD", "b"));
+    public static final List<String> dRules = new ArrayList<String>(Arrays.asList("BA"));
     public static final String[][] pyramid = new String[7][7];
 
     /**
@@ -50,19 +50,19 @@ public class CYK {
         }
 
         for (String item : pairs) {
-            if (s.contains(item) && !nonterminals.contains("S")) {
+            if (sRules.contains(item) && !nonterminals.contains("S")) {
                 nonterminals = nonterminals.concat("S");
             }
-            if (a.contains(item) && !nonterminals.contains("A")) {
+            if (aRules.contains(item) && !nonterminals.contains("A")) {
                 nonterminals = nonterminals.concat("A");
             }
-            if (b.contains(item) && !nonterminals.contains("B")) {
+            if (bRules.contains(item) && !nonterminals.contains("B")) {
                 nonterminals = nonterminals.concat("B");
             }
-            if (c.contains(item) && !nonterminals.contains("C")) {
+            if (cRules.contains(item) && !nonterminals.contains("C")) {
                 nonterminals = nonterminals.concat("C");
             }
-            if (d.contains(item) && !nonterminals.contains("D")) {
+            if (dRules.contains(item) && !nonterminals.contains("D")) {
                 nonterminals = nonterminals.concat("D");
             }
         }
@@ -76,19 +76,19 @@ public class CYK {
         String nonterminals = "";
         for (int i = 0; i < inputString.length(); i++) {
             nonterminals = "";
-            if (s.contains(inputString.charAt(i)+"")) {
+            if (sRules.contains(inputString.charAt(i)+"")) {
                 nonterminals = nonterminals.concat("S");
             }
-            if (a.contains(inputString.charAt(i)+"")) {
+            if (aRules.contains(inputString.charAt(i)+"")) {
                 nonterminals = nonterminals.concat("A");
             }
-            if (b.contains(inputString.charAt(i)+"")) {
+            if (bRules.contains(inputString.charAt(i)+"")) {
                 nonterminals = nonterminals.concat("B");
             }
-            if (c.contains(inputString.charAt(i)+"")) {
+            if (cRules.contains(inputString.charAt(i)+"")) {
                 nonterminals = nonterminals.concat("C");
             }
-            if (d.contains(inputString.charAt(i)+"")) {
+            if (dRules.contains(inputString.charAt(i)+"")) {
                 nonterminals = nonterminals.concat("D");
             }
             if (!nonterminals.isEmpty()) {
@@ -170,37 +170,37 @@ public class CYK {
      */
     public static void printRules() {
         System.out.print("Rules: \nS -> ");
-        for (int i = 0; i < s.size(); i++) {
-            System.out.print(s.get(i));
-            if (i != s.size()-1)
+        for (int i = 0; i < sRules.size(); i++) {
+            System.out.print(sRules.get(i));
+            if (i != sRules.size()-1)
                 System.out.print(" | ");
         }
 
         System.out.print("\nA -> ");
-        for (int i = 0; i < a.size(); i++) {
-            System.out.print(a.get(i));
-            if (i != a.size()-1)
+        for (int i = 0; i < aRules.size(); i++) {
+            System.out.print(aRules.get(i));
+            if (i != aRules.size()-1)
                 System.out.print(" | ");
         }
 
         System.out.print("\nB -> ");
-        for (int i = 0; i < b.size(); i++) {
-            System.out.print(b.get(i));
-            if (i != b.size()-1)
+        for (int i = 0; i < bRules.size(); i++) {
+            System.out.print(bRules.get(i));
+            if (i != bRules.size()-1)
                 System.out.print(" | ");
         }
 
         System.out.print("\nC -> ");
-        for (int i = 0; i < c.size(); i++) {
-            System.out.print(c.get(i));
-            if (i != c.size()-1)
+        for (int i = 0; i < cRules.size(); i++) {
+            System.out.print(cRules.get(i));
+            if (i != cRules.size()-1)
                 System.out.print(" | ");
         }
 
         System.out.print("\nD -> ");
-        for (int i = 0; i < d.size(); i++) {
-            System.out.print(d.get(i));
-            if (i != d.size()-1)
+        for (int i = 0; i < dRules.size(); i++) {
+            System.out.print(dRules.get(i));
+            if (i != dRules.size()-1)
                 System.out.print(" | ");
         }
     }
