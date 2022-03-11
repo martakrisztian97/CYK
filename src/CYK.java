@@ -199,17 +199,21 @@ public class CYK {
         }
     }
 
-    public static void main(String[] args) {
-        printRules();
-        firstRowUpload();
-        if (N > 1){
-            rowsUpload();
-        }
+    public static void result() {
         if (pyramid[N-1][0].contains("S")) {
             System.out.println("\nA(z) "+inputString+" sztring levezetheto.\n");
         } else {
             System.out.println("\nA(z) "+inputString+" sztring nem vezetheto le.\n");
         }
+    }
+
+    public static void main(String[] args) {
+        printRules();
+        firstRowUpload();
+        if (N > 1) {
+            rowsUpload();
+        }
+        result();
         for (int i = N; i > 0; i--) {
             printRow(i);
         }
