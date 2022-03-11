@@ -25,12 +25,13 @@ public class CYK {
      * D -> BA
      */
     public static final String inputString = "aabbaba";
+    public static final int N = inputString.length();
     public static final List<String> sRules = new ArrayList<String>(Arrays.asList("AB", "CD", "CB", "SS"));
     public static final List<String> aRules = new ArrayList<String>(Arrays.asList("BC", "a"));
     public static final List<String> bRules = new ArrayList<String>(Arrays.asList("SC", "b"));
     public static final List<String> cRules = new ArrayList<String>(Arrays.asList("DD", "b"));
     public static final List<String> dRules = new ArrayList<String>(Arrays.asList("BA"));
-    public static final String[][] pyramid = new String[7][7];
+    public static final String[][] pyramid = new String[N][N];
 
     /**
      * Ket mezo nemterminalisainak elemzese a szabalyok alapjan. (Descartes-szorzat segitsegevel.)
@@ -74,7 +75,7 @@ public class CYK {
      */
     public static void firstRowUpload() {
         String nonterminals = "";
-        for (int i = 0; i < inputString.length(); i++) {
+        for (int i = 0; i < N; i++) {
             nonterminals = "";
             if (sRules.contains(inputString.charAt(i)+"")) {
                 nonterminals = nonterminals.concat("S");
@@ -101,14 +102,14 @@ public class CYK {
      * Sorok feltoltese a masodik sortol a tetejeig.
      */
     public static void rowsUpload() {
-        int k = 6;
-        for (int i = 1; i < 6; i++) {
+        int k = N-1;
+        for (int i = 1; i < N-1; i++) {
             for (int j = 0; j < k; j++) {
                 uploadField(i,j);
             }
             k--;
         }
-        uploadField(6,0);
+        uploadField(N-1,0);
     }
 
     /**
@@ -147,7 +148,7 @@ public class CYK {
      * @param row A piramis kiirnando soranak szama.
      */
     public static void printRow(int row) {
-        for (int i = 0; i < 8-row; i++) {  // i az oszlop szama, a sor szamanak fuggvenyeben
+        for (int i = 0; i < N+1-row; i++) {  // i az oszlop szama, a sor szamanak fuggvenyeben
             if (pyramid[row-1][i].isEmpty()) { // ha ures
                 System.out.print("- ");
             } else if (pyramid[row-1][i].length() == 1){ // ha 1 nemtermilais szerepel a mezoben
@@ -208,18 +209,16 @@ public class CYK {
     public static void main(String[] args) {
         printRules();
         firstRowUpload();
-        rowsUpload();
-        if (pyramid[6][0].contains("S")) {
+        if (N > 1){
+            rowsUpload();
+        }
+        if (pyramid[N-1][0].contains("S")) {
             System.out.println("\nA(z) "+inputString+" sztring levezetheto.\n");
         } else {
             System.out.println("\nA(z) "+inputString+" sztring nem vezetheto le.\n");
         }
-        printRow(7);
-        printRow(6);
-        printRow(5);
-        printRow(4);
-        printRow(3);
-        printRow(2);
-        printRow(1);
+        for (int i = N; i > 0; i--) {
+            printRow(i);
+        }
     }
 }
