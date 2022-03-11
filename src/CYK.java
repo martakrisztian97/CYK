@@ -16,13 +16,6 @@ public class CYK {
      * - Input sztring
      * - Szabalyok listak segitsegevel
      * - Piramis ketdimenzios tombje
-     *
-     * Szabalyok:
-     * S -> AB | CD | CB | SS
-     * A -> BC | a
-     * B -> SC | b
-     * C -> DD | b
-     * D -> BA
      */
     public static final String inputString = "aabbaba";
     public static final int N = inputString.length();
