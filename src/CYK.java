@@ -205,6 +205,9 @@ public class CYK {
         } else {
             System.out.println("\nA(z) "+inputString+" sztring nem vezetheto le.\n");
         }
+        for (int i = N; i > 0; i--) {
+            printRow(i);
+        }
     }
 
     public static void main(String[] args) {
@@ -214,8 +217,5 @@ public class CYK {
             rowsUpload();
         }
         result();
-        for (int i = N; i > 0; i--) {
-            printRow(i);
-        }
     }
 }
