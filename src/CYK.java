@@ -199,6 +199,9 @@ public class CYK {
         }
     }
 
+    /**
+     * Az eredmeny kiiratasa.
+     */
     public static void result() {
         if (pyramid[N-1][0].contains("S")) {
             System.out.println("\nA(z) "+inputString+" sztring levezetheto.\n");
