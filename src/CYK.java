@@ -163,7 +163,7 @@ public class CYK {
      * A szabalyok kiiratasa.
      */
     public static void printRules() {
-        System.out.print("Rules: \nS -> ");
+        System.out.print("Szabalyok: \nS -> ");
         for (int i = 0; i < sRules.size(); i++) {
             System.out.print(sRules.get(i));
             if (i != sRules.size()-1)
