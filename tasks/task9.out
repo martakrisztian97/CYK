@@ -1,4 +1,4 @@
-Rules: 
+Szabalyok: 
 S -> AS | SB | AB
 A -> SB | 0
 B -> SB | AS | 1

@@ -1,4 +1,4 @@
-Rules: 
+Szabalyok: 
 S -> AB | CD | CB | SS
 A -> BC | a
 B -> SC | b
